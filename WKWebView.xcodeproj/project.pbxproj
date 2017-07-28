@@ -15,6 +15,9 @@
 		B4455DF21F29C7CF00CD3053 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4455DF01F29C7CF00CD3053 /* LaunchScreen.storyboard */; };
 		B4455DFD1F29C7D000CD3053 /* WKWebViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4455DFC1F29C7D000CD3053 /* WKWebViewTests.m */; };
 		B4455E081F29C7D000CD3053 /* WKWebViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4455E071F29C7D000CD3053 /* WKWebViewUITests.m */; };
+		B4455E181F29C83300CD3053 /* HXWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4455E171F29C83300CD3053 /* HXWKWebView.m */; };
+		B4455E1A1F29C96600CD3053 /* WKWebViewText.html in Resources */ = {isa = PBXBuildFile; fileRef = B4455E191F29C96600CD3053 /* WKWebViewText.html */; };
+		B4455E1D1F29D2ED00CD3053 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4455E1C1F29D2ED00CD3053 /* SecondViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,11 @@
 		B4455E031F29C7D000CD3053 /* WKWebViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WKWebViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4455E071F29C7D000CD3053 /* WKWebViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKWebViewUITests.m; sourceTree = "<group>"; };
 		B4455E091F29C7D000CD3053 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4455E161F29C83300CD3053 /* HXWKWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWKWebView.h; sourceTree = "<group>"; };
+		B4455E171F29C83300CD3053 /* HXWKWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWKWebView.m; sourceTree = "<group>"; };
+		B4455E191F29C96600CD3053 /* WKWebViewText.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WKWebViewText.html; sourceTree = "<group>"; };
+		B4455E1B1F29D2ED00CD3053 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		B4455E1C1F29D2ED00CD3053 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +109,13 @@
 		B4455DE11F29C7CF00CD3053 /* WKWebView */ = {
 			isa = PBXGroup;
 			children = (
+				B4455E151F29C7F200CD3053 /* WKWebViewManager */,
 				B4455DE51F29C7CF00CD3053 /* AppDelegate.h */,
 				B4455DE61F29C7CF00CD3053 /* AppDelegate.m */,
 				B4455DE81F29C7CF00CD3053 /* ViewController.h */,
 				B4455DE91F29C7CF00CD3053 /* ViewController.m */,
+				B4455E1B1F29D2ED00CD3053 /* SecondViewController.h */,
+				B4455E1C1F29D2ED00CD3053 /* SecondViewController.m */,
 				B4455DEB1F29C7CF00CD3053 /* Main.storyboard */,
 				B4455DEE1F29C7CF00CD3053 /* Assets.xcassets */,
 				B4455DF01F29C7CF00CD3053 /* LaunchScreen.storyboard */,
@@ -117,6 +128,7 @@
 		B4455DE21F29C7CF00CD3053 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B4455E191F29C96600CD3053 /* WKWebViewText.html */,
 				B4455DE31F29C7CF00CD3053 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -138,6 +150,15 @@
 				B4455E091F29C7D000CD3053 /* Info.plist */,
 			);
 			path = WKWebViewUITests;
+			sourceTree = "<group>";
+		};
+		B4455E151F29C7F200CD3053 /* WKWebViewManager */ = {
+			isa = PBXGroup;
+			children = (
+				B4455E161F29C83300CD3053 /* HXWKWebView.h */,
+				B4455E171F29C83300CD3053 /* HXWKWebView.m */,
+			);
+			path = WKWebViewManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,7 +228,7 @@
 				TargetAttributes = {
 					B4455DDE1F29C7CF00CD3053 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 4Z2CM944BG;
+						DevelopmentTeam = 7ASPEP8SM6;
 						ProvisioningStyle = Automatic;
 					};
 					B4455DF71F29C7D000CD3053 = {
@@ -250,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4455DF21F29C7CF00CD3053 /* LaunchScreen.storyboard in Resources */,
+				B4455E1A1F29C96600CD3053 /* WKWebViewText.html in Resources */,
 				B4455DEF1F29C7CF00CD3053 /* Assets.xcassets in Resources */,
 				B4455DED1F29C7CF00CD3053 /* Main.storyboard in Resources */,
 			);
@@ -276,9 +298,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4455E1D1F29D2ED00CD3053 /* SecondViewController.m in Sources */,
 				B4455DEA1F29C7CF00CD3053 /* ViewController.m in Sources */,
 				B4455DE71F29C7CF00CD3053 /* AppDelegate.m in Sources */,
 				B4455DE41F29C7CF00CD3053 /* main.m in Sources */,
+				B4455E181F29C83300CD3053 /* HXWKWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +451,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4Z2CM944BG;
+				DEVELOPMENT_TEAM = 7ASPEP8SM6;
 				INFOPLIST_FILE = WKWebView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huaxia.creditor.app.WKWebView;
@@ -439,7 +463,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4Z2CM944BG;
+				DEVELOPMENT_TEAM = 7ASPEP8SM6;
 				INFOPLIST_FILE = WKWebView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huaxia.creditor.app.WKWebView;

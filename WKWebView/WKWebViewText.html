@@ -22,7 +22,7 @@
       <br/>
       <div><input type="text" value="" id="nameID"></div>
       <br/>
-      <div><input type="button" value="Set" onclick="setValue('value')"></div>
+      <div><input type="button" value="Set Value to Field" onclick="setValue('value')"></div>
       <br/>
 
     <div>
@@ -45,6 +45,7 @@
     
     function setValue(value) {
         document.getElementById('nameID').value=value;
+        window.webkit.messageHandlers.senderModel.postMessage('给文本款赋值成功');
         
     }
     function callJsConfirm() {

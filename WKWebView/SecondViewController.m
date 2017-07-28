@@ -16,7 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor cyanColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    [self.view addSubview:label];
+    label.text = self.htmlText;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.center = self.view.center;
+    
 }
 
 - (void)didReceiveMemoryWarning {

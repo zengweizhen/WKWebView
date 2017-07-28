@@ -10,4 +10,6 @@
 
 @interface SecondViewController : UIViewController
 
+@property (nonatomic, strong) NSString *htmlText;
+
 @end
