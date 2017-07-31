@@ -187,7 +187,7 @@ static void *HXWebBrowserContext = &HXWebBrowserContext;
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     if(webView == self.uiWebView) {
-        self.titleStr = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+        self.titleString = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
         if(!self.uiWebView.isLoading) {
             self.uiWebViewIsLoading = NO;
             [self fakeProgressBarStopLoading];
@@ -229,7 +229,7 @@ static void *HXWebBrowserContext = &HXWebBrowserContext;
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     if(webView == self.wkWebView) {
         [webView evaluateJavaScript:@"document.title" completionHandler:^(id _Nullable obj, NSError * _Nullable error) {
-            self.titleStr = obj;
+            self.titleString = obj;
             //代理
             [self.delegate hx_webView:self didFinishLoadingURL:self.wkWebView.URL];
         }];

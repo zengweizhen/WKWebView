@@ -76,7 +76,7 @@
 - (void) hx_webView:(HXWKWebView *)hxWebview didFinishLoadingURL:(NSURL *)URL{
     
     NSLog(@"The page is loaded!");
-    self.title = self.wkWebView.titleStr;
+    self.title = self.wkWebView.titleString;
     
 }
 

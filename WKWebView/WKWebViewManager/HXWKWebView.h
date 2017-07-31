@@ -60,7 +60,7 @@
 /*
  *  webView的标题
  */
-@property (nonatomic, strong) NSString *titleStr;
+@property (nonatomic, strong) NSString *titleString;
 /*
  *  webView进度条
  */
