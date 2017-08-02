@@ -38,11 +38,9 @@
 }
 
 - (IBAction)clickButton:(UIButton *)sender {
-    
-    ///这里是OC原生调用JS方法setValue
-    NSString *setValue = [NSString stringWithFormat:@"setValue('%@')",@"这里是调用JS方法给文本款赋值"];
-    [self.wkWebView.wkWebView evaluateJavaScript:setValue completionHandler:^(id _Nullable object, NSError * _Nullable error) {
-        NSLog(@"给html文本框赋值后的回调");
+
+    [self.wkWebView hx_stringByEvaluatingSendMessageToJavaScript:@"setValue" paremeter:@"在这里通过OC给JS赋值" completionHandler:^(id object) {
+        NSLog(@"%@",object);
     }];
 }
 
@@ -101,15 +99,16 @@
 /**
  WKWebView和JS交互代理
  */
-- (void)hx_userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
+- (void)hx_userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(HXWebModel *)message{
+   
     
     NSLog(@"JS交互:%@",message.body);
     ///点击网页上的按钮 获取文本款的值
     NSString *textString = @"document.getElementById('nameID').value";
-    [self.wkWebView.wkWebView evaluateJavaScript:textString completionHandler:^(id _Nullable object, NSError * _Nullable error) {
+    
+    [self.wkWebView hx_stringByEvaluatingJavaScriptFromString:textString completionHandler:^(id object) {
         self.htmlStr = object;
         NSLog(@"获取html文本框上的值:%@",object);
-        
     }];
     
     ///JS调用OC方法

@@ -7,12 +7,15 @@
 //
 
 #import "HXWKWebView.h"
+#import "WebViewJavascriptBridge.h"
 
 #define isiOS8 [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0
 
 static void *HXWebBrowserContext = &HXWebBrowserContext;
 
 @interface HXWKWebView ()<WKNavigationDelegate, WKUIDelegate, UIWebViewDelegate, WKScriptMessageHandler>
+
+@property WebViewJavascriptBridge* bridge;
 
 /*
  *  webView进度条定时器
@@ -31,6 +34,7 @@ static void *HXWebBrowserContext = &HXWebBrowserContext;
     
     self = [super initWithFrame:frame];
     if (self) {
+        
         if(isiOS8) {
             WKWebViewConfiguration *config = [WKWebViewConfiguration new];
             //初始化偏好设置属性：preferences
@@ -57,8 +61,7 @@ static void *HXWebBrowserContext = &HXWebBrowserContext;
             [self addSubview:self.wkWebView];
             self.wkWebView.scrollView.bounces = NO;
             [self.wkWebView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:0 context:HXWebBrowserContext];
-        }
-        else {
+        }else {
             self.uiWebView = [[UIWebView alloc] init];
             [self.uiWebView setFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
             [self.uiWebView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
@@ -68,6 +71,19 @@ static void *HXWebBrowserContext = &HXWebBrowserContext;
             [self.uiWebView setScalesPageToFit:YES];
             [self.uiWebView.scrollView setAlwaysBounceVertical:YES];
             self.uiWebView.scrollView.bounces = NO;
+            self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.uiWebView];
+        
+            [WebViewJavascriptBridge enableLogging]; //开启调试模式
+            //响应JS通过callhandler发送给OC的消息
+            [self.bridge registerHandler:@"testJavascriptSendMessage" handler:^(id data, WVJBResponseCallback responseCallback) {
+                responseCallback(data);
+                if ([self.delegate respondsToSelector:@selector(hx_userContentController:didReceiveScriptMessage:)]) {
+                    HXWebModel *message = [[HXWebModel alloc] init];
+                    message.body = data;
+                    [self.delegate hx_userContentController:nil didReceiveScriptMessage:message];
+                }
+
+            }];
             [self addSubview:self.uiWebView];
         }
         self.backgroundColor = [UIColor whiteColor];
@@ -460,7 +476,45 @@ static void *HXWebBrowserContext = &HXWebBrowserContext;
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
     
     if ([self.delegate respondsToSelector:@selector(hx_userContentController:didReceiveScriptMessage:)]) {
-        [self.delegate hx_userContentController:userContentController didReceiveScriptMessage:message];
+        HXWebModel *messageModel = [[HXWebModel alloc] init];
+        messageModel.name = message.name;
+        messageModel.body = message.body;
+        [self.delegate hx_userContentController:userContentController didReceiveScriptMessage:messageModel];
+    }
+}
+
+/**
+ HTML和OC交互
+ 
+ @param scriptString 脚本字符串
+ */
+- (void)hx_stringByEvaluatingJavaScriptFromString:(NSString *)scriptString completionHandler:(CompletionHandler)handlerBlock{
+    
+    if (self.wkWebView) {
+        [self.wkWebView evaluateJavaScript:scriptString completionHandler:^(id _Nullable object, NSError * _Nullable error) {
+            handlerBlock(object);
+            
+        }];
+    }else{
+        id object = [self.uiWebView stringByEvaluatingJavaScriptFromString:scriptString];
+        handlerBlock(object);
+    }
+}
+
+- (void)hx_stringByEvaluatingSendMessageToJavaScript:(NSString *)name paremeter:(NSString *) paremeter completionHandler:(CompletionHandler)handlerBlock{
+    
+    if (self.wkWebView) {
+        NSString *scriptString = [NSString stringWithFormat:@"%@('%@')",name,paremeter];
+        [self.wkWebView evaluateJavaScript:scriptString completionHandler:^(id _Nullable object, NSError * _Nullable error) {
+            handlerBlock(object);
+        }];
+
+    }else{
+        ///给JS发送消息
+        [self.bridge callHandler:name data:paremeter responseCallback:^(id responseData) {
+            handlerBlock(responseData);
+        }];
+
     }
 }
 

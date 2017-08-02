@@ -23,7 +23,8 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="490-os-fZ5">
                                 <rect key="frame" x="0.0" y="567" width="375" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.67206488720000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="OC调用JS方法给文本框赋值"/>
                                 <connections>
                                     <action selector="clickButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pUs-Rs-9M8"/>

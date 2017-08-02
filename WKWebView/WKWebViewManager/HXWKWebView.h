@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
+#import "HXWebModel.h"
+
 @class HXWKWebView;
 @protocol HXWKWebViewDelegate <NSObject>
 @optional
@@ -52,9 +54,11 @@
  @param userContentController userContentController description
  @param message message description
  */
-- (void) hx_userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message;
+- (void) hx_userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(HXWebModel *)message;
 
 @end
+
+typedef void(^CompletionHandler)(id object);
 
 @interface HXWKWebView : UIView
 /*
@@ -69,6 +73,8 @@
  *  webView进度条颜色
  */
 @property (nonatomic, strong) UIColor *progressColor;
+
+@property (nonatomic, copy  ) CompletionHandler completionHandler;
 
 @property (nonatomic, strong) WKWebView *wkWebView;
 @property (nonatomic, strong) UIWebView *uiWebView;
@@ -123,5 +129,22 @@
 - (void)hx_loadHTMLString:(NSString *)HTMLString;
 
 
+/**
+ HTML给OC发送消息
+ 
+ @param scriptString 脚本字符串
+ @param handlerBlock 回调
+ */
+- (void)hx_stringByEvaluatingJavaScriptFromString:(NSString *)scriptString completionHandler:(CompletionHandler)handlerBlock;
+
+
+/**
+ OC给HTML页面发送消息
+ 
+ @param name 函数名
+ @param paremeter 参数
+ @param handlerBlock 回调
+ */
+- (void)hx_stringByEvaluatingSendMessageToJavaScript:(NSString *)name paremeter:(NSString *) paremeter completionHandler:(CompletionHandler)handlerBlock;
 @end
 

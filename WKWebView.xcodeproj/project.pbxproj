@@ -18,6 +18,11 @@
 		B4455E181F29C83300CD3053 /* HXWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4455E171F29C83300CD3053 /* HXWKWebView.m */; };
 		B4455E1A1F29C96600CD3053 /* WKWebViewText.html in Resources */ = {isa = PBXBuildFile; fileRef = B4455E191F29C96600CD3053 /* WKWebViewText.html */; };
 		B4455E1D1F29D2ED00CD3053 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4455E1C1F29D2ED00CD3053 /* SecondViewController.m */; };
+		B4F47E091F3175550003541C /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F47E021F3175550003541C /* WebViewJavascriptBridge.m */; };
+		B4F47E0A1F3175550003541C /* WebViewJavascriptBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F47E041F3175550003541C /* WebViewJavascriptBridge_JS.m */; };
+		B4F47E0B1F3175550003541C /* WebViewJavascriptBridgeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F47E061F3175550003541C /* WebViewJavascriptBridgeBase.m */; };
+		B4F47E0C1F3175550003541C /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F47E081F3175550003541C /* WKWebViewJavascriptBridge.m */; };
+		B4F47E0F1F31B2BF0003541C /* HXWebModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F47E0E1F31B2BF0003541C /* HXWebModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +64,16 @@
 		B4455E191F29C96600CD3053 /* WKWebViewText.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WKWebViewText.html; sourceTree = "<group>"; };
 		B4455E1B1F29D2ED00CD3053 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		B4455E1C1F29D2ED00CD3053 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		B4F47E011F3175550003541C /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		B4F47E021F3175550003541C /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		B4F47E031F3175550003541C /* WebViewJavascriptBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge_JS.h; sourceTree = "<group>"; };
+		B4F47E041F3175550003541C /* WebViewJavascriptBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge_JS.m; sourceTree = "<group>"; };
+		B4F47E051F3175550003541C /* WebViewJavascriptBridgeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridgeBase.h; sourceTree = "<group>"; };
+		B4F47E061F3175550003541C /* WebViewJavascriptBridgeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridgeBase.m; sourceTree = "<group>"; };
+		B4F47E071F3175550003541C /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		B4F47E081F3175550003541C /* WKWebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		B4F47E0D1F31B2BF0003541C /* HXWebModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWebModel.h; sourceTree = "<group>"; };
+		B4F47E0E1F31B2BF0003541C /* HXWebModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWebModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,10 +170,28 @@
 		B4455E151F29C7F200CD3053 /* WKWebViewManager */ = {
 			isa = PBXGroup;
 			children = (
+				B4F47E001F3175550003541C /* WebViewJavascriptBridge */,
 				B4455E161F29C83300CD3053 /* HXWKWebView.h */,
 				B4455E171F29C83300CD3053 /* HXWKWebView.m */,
+				B4F47E0D1F31B2BF0003541C /* HXWebModel.h */,
+				B4F47E0E1F31B2BF0003541C /* HXWebModel.m */,
 			);
 			path = WKWebViewManager;
+			sourceTree = "<group>";
+		};
+		B4F47E001F3175550003541C /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				B4F47E011F3175550003541C /* WebViewJavascriptBridge.h */,
+				B4F47E021F3175550003541C /* WebViewJavascriptBridge.m */,
+				B4F47E031F3175550003541C /* WebViewJavascriptBridge_JS.h */,
+				B4F47E041F3175550003541C /* WebViewJavascriptBridge_JS.m */,
+				B4F47E051F3175550003541C /* WebViewJavascriptBridgeBase.h */,
+				B4F47E061F3175550003541C /* WebViewJavascriptBridgeBase.m */,
+				B4F47E071F3175550003541C /* WKWebViewJavascriptBridge.h */,
+				B4F47E081F3175550003541C /* WKWebViewJavascriptBridge.m */,
+			);
+			path = WebViewJavascriptBridge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,8 +331,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4F47E0B1F3175550003541C /* WebViewJavascriptBridgeBase.m in Sources */,
 				B4455E1D1F29D2ED00CD3053 /* SecondViewController.m in Sources */,
+				B4F47E091F3175550003541C /* WebViewJavascriptBridge.m in Sources */,
 				B4455DEA1F29C7CF00CD3053 /* ViewController.m in Sources */,
+				B4F47E0A1F3175550003541C /* WebViewJavascriptBridge_JS.m in Sources */,
+				B4F47E0C1F3175550003541C /* WKWebViewJavascriptBridge.m in Sources */,
+				B4F47E0F1F31B2BF0003541C /* HXWebModel.m in Sources */,
 				B4455DE71F29C7CF00CD3053 /* AppDelegate.m in Sources */,
 				B4455DE41F29C7CF00CD3053 /* main.m in Sources */,
 				B4455E181F29C83300CD3053 /* HXWKWebView.m in Sources */,
@@ -540,6 +578,7 @@
 				B4455E0E1F29C7D000CD3053 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B4455E0F1F29C7D000CD3053 /* Build configuration list for PBXNativeTarget "WKWebViewTests" */ = {
 			isa = XCConfigurationList;
@@ -548,6 +587,7 @@
 				B4455E111F29C7D000CD3053 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B4455E121F29C7D000CD3053 /* Build configuration list for PBXNativeTarget "WKWebViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -556,6 +596,7 @@
 				B4455E141F29C7D000CD3053 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
