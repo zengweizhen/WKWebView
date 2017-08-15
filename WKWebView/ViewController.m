@@ -51,7 +51,7 @@
     
     self.wkWebView = [[HXWKWebView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 100 - 64)];
     NSURL *path = [[NSBundle mainBundle] URLForResource:@"WKWebViewText" withExtension:@"html"];
-    [self.wkWebView hx_loadRequest:[NSURLRequest requestWithURL:path]];
+    [self.wkWebView hx_loadURL:path];
     [self.view addSubview:self.wkWebView];
     self.wkWebView.delegate = self;
 

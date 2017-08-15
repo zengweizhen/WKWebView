@@ -12,7 +12,7 @@
 
 @class HXWKWebView;
 @protocol HXWKWebViewDelegate <NSObject>
-@optional
+@required
 
 /**
  webView加载完成
@@ -47,7 +47,7 @@
  */
 - (void)hx_webViewDidStartLoad:(HXWKWebView *)hxWebview;
 
-
+@optional
 /**
  WKWebView与JS 交互代理
  

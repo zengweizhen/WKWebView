@@ -72,7 +72,7 @@ static void *HXWebBrowserContext = &HXWebBrowserContext;
             [self.uiWebView.scrollView setAlwaysBounceVertical:YES];
             self.uiWebView.scrollView.bounces = NO;
             self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.uiWebView];
-        
+            
             [WebViewJavascriptBridge enableLogging]; //开启调试模式
             //响应JS通过callhandler发送给OC的消息
             [self.bridge registerHandler:@"testJavascriptSendMessage" handler:^(id data, WVJBResponseCallback responseCallback) {
@@ -82,7 +82,7 @@ static void *HXWebBrowserContext = &HXWebBrowserContext;
                     message.body = data;
                     [self.delegate hx_userContentController:nil didReceiveScriptMessage:message];
                 }
-
+                
             }];
             [self addSubview:self.uiWebView];
         }
@@ -288,8 +288,8 @@ static void *HXWebBrowserContext = &HXWebBrowserContext;
         NSHTTPURLResponse *response = nil;
         [NSURLConnection sendSynchronousRequest:navigationAction.request returningResponse:&response error:&error];
         ///加载的本地URL(加载本地url的时候成功是不会出现statusCode状态)
-        if (([response.URL.absoluteString rangeOfString:@"file:"].location == NSNotFound) && response.statusCode != 200 ) {
-            //状态码不是200就是失败
+        if (([response.URL.absoluteString rangeOfString:@"file:"].location == NSNotFound) && ([response.URL.absoluteString rangeOfString:@"about:blank"].location == NSNotFound) && response.statusCode != 200) {
+            //状态码不是200就是失败  空白页面不算失败
             decisionHandler(WKNavigationActionPolicyCancel);
             [self.delegate hx_webView:self didFailToLoadURL:self.wkWebView.URL error:nil];
             return ;
@@ -508,13 +508,13 @@ static void *HXWebBrowserContext = &HXWebBrowserContext;
         [self.wkWebView evaluateJavaScript:scriptString completionHandler:^(id _Nullable object, NSError * _Nullable error) {
             handlerBlock(object);
         }];
-
+        
     }else{
         ///给JS发送消息
         [self.bridge callHandler:name data:paremeter responseCallback:^(id responseData) {
             handlerBlock(responseData);
         }];
-
+        
     }
 }
 
